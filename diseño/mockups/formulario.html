@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang=es dir=ltr>
+	<head>
+		<meta charset=utf-8 />
+		<meta name=viewport content='width=device-width, initial-scale=1' />
+		<meta name=author content="dminoredondo.guadalupe@alumnado.fundacionloyola.net" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="../../src/www/css/estilo.css" />
+		<title>MotoneW</title>
+	</head>
+	<body>
+        <header>
+			<ul>
+				<li><img src="../../src/www/assets/logo1.jpg" alt="logo" id="logo"></li>
+			</ul>
+		</header>
+        <div id="divFormulario">
+            <div id="formulario">
+                <div>
+                    <label for="marca">Marca</label><br>
+                    <select name="marca" id="marca">
+                        <option selected="true" disabled="disabled" value="0">Escoge una marca</option>
+                        <option value="aprilia">Aprilia</option>
+                        <option value="ktm">KTM</option>
+                        <option value="bmw">BMW</option>
+                        <option value="honda">Honda</option>
+                        <option value="yamaha">Yamaha</option>
+                        <option value="mvagusta">MVAgusta</option>
+                        <option value="ducati">Ducati</option>
+                        <option value="beta">Beta</option>
+                    </select>
+                </div><br>
+                <label for="tipo">Tipo de moto</label><br>
+                <select name="tipo">
+                    <option selected="true" disabled="disabled" value="0">Selecciona un tipo</option>
+                    <option value="sport">Sport</option>
+                    <option value="naked">Naked</option>
+                    <option value="trail">Trail</option>
+                    <option value="enduro">Enduro</option>
+                    <option value="cross">Cross</option>
+                </select><br><br>
+                <div>
+                    <label for="anio">Año</label><br>
+                    <input type="date" name="anio" />
+                </div><br>
+                <div>
+                    <label for="kilometros">Kilometros</label><br>
+                    <input type="text" name="kilometros" />
+                </div><br>
+                <div>
+                    <label for="precio">Precio</label><br>
+                    <input type="text" name="precio" />
+                </div><br>
+                <div>
+                    <label for="descripcion">Descripción</label><br>
+                    <textarea name="descripcion"></textarea>
+                </div><br>
+                <input type="file" name="imagen" />
+                <div id="botones_formulario">
+                    <div id="cancelar"><a href="index.html">Cancelar</a></div>
+                    <div id="aceptar"><a href="index.html">Aceptar</a></div>
+                    <!-- <div>Modificar</div> -->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
