@@ -4,6 +4,7 @@
 **/
 
 import {Vista} from './vista.js'
+import {Moto} from './moto.js'
 
 /**
 	Vista del Listar
@@ -19,22 +20,51 @@ export class VistaListar extends Vista{
 		super(div)
 		this.controlador = controlador
 
-		//this.btnListar = document.getElementById('listar')
-		this.btnListar = $("#listar")
-		//this.btnListar.onclick = this.pulsarListar.bind(this)
-		this.btnListar.click(this.pulsarListar.bind(this))
-		//this.divMotos = document.getElementById('motos')
-		this.divMotos = $("#motos")
+		this.btnListar = document.getElementById('listar')
+		this.btnListar.onclick = this.pulsarListar.bind(this)
+		this.divMotos = document.getElementById('motos')
+		/*
+		for(let i=0;i<=2;i++){
 
+			this.divTarjeta = document.createElement("div")
+			this.divTarjeta.classList.add('tarjeta')
+			this.divMotos.appendChild(this.divTarjeta)
+
+			this.divImagen = document.createElement("div")
+			this.divTarjeta.appendChild(this.divImagen)
+			this.imagen = document.createElement("img")
+			this.imagen.classList.add("img")
+			this.imagen.src = this.listado.imagen
+			this.divImagen.appendChild(this.imagen)
+
+			this.divBotones = document.createElement("div")
+			this.divBotones.classList.add('botones')
+			this.divTarjeta.appendChild(this.divBotones)
+
+			this.spanEditar = document.createElement("span")
+			this.spanEditar.classList.add('modbo')
+			this.iconoEditar = document.createElement("i")
+			this.iconoEditar.classList.add("fa-solid")
+			this.iconoEditar.classList.add("fa-pen")
+			this.spanEditar.appendChild(this.iconoEditar)
+			this.divBotones.appendChild(this.spanEditar)
+			
+			this.spanBorrar = document.createElement("span")
+			this.spanBorrar.classList.add('modbo')
+			this.iconoBorrar = document.createElement("i")
+			this.iconoBorrar.classList.add("fa-solid")
+			this.iconoBorrar.classList.add("fa-trash-can")
+			this.spanBorrar.appendChild(this.iconoBorrar)
+			this.divBotones.appendChild(this.spanBorrar)
+
+		}*/
 	}
-
 	pulsarListar(){
 		const solicitud = window.indexedDB.open('bd1')
 		solicitud.onsuccess = (evento) =>{
 			//borrar el divMotos
-			/*while (this.divMotos.firstChild)
-				this.divMotos.firstChild.remove()*/
-			this.divMotos.empty()
+			while (this.divMotos.firstChild)
+				this.divMotos.firstChild.remove()
 			this.bd = evento.target.result;
 			console.log('Base de datos cargada')
 			const objectStore = this.bd.transaction('tablaMotos', 'readonly').objectStore('tablaMotos')
@@ -43,77 +73,44 @@ export class VistaListar extends Vista{
 				let motos = solicitud.result
 				for (let moto of motos){
 					this.crearTarjetas(moto)
+					let p = document.createElement('p')
+					p.textContent = moto.imagen
+					this.divMotos.appendChild(p)
 				}
-				//this.divTarjetaAnadir = document.createElement("div")
-				//this.divTarjetaAnadir.classList.add('tarjeta')
-				//this.divTarjetaAnadir.setAttribute("id","tarjetaAnadir")
-				this.divTarjetaAnadir = $("<div class='tarjeta' id='targetaAnadir'>")
-				//this.divMotos.appendChild(this.divTarjetaAnadir)
-				this.divMotos.append(this.divTarjetaAnadir)
-
-				//this.spanAnadir = document.createElement("span")
-				//this.spanAnadir.setAttribute("id","anadir2")
-				this.spanAnadir = $("<p id='anadir2'>")
-				this.spanAnadir.text("+")
-				//this.divTarjetaAnadir.appendChild(this.spanAnadir)
-				this.divTarjetaAnadir.append(this.spanAnadir)
-				//this.tarjetaAnadir.onclick = this.pulsarAnadir.bind(this)
-				this.divTarjetaAnadir.click(this.pulsarAnadir.bind(this))
 			}).bind(this)
 		}
 	}
 
-	pulsarAnadir(){
-		this.controlador.pulsarNavAnadir()
-	}
-
 	crearTarjetas(moto){
-		//this.divTarjeta = document.createElement("div")
-		//this.divTarjeta.classList.add('tarjeta')
-		this.divTarjeta = $("<div class='tarjeta'>")
-		//this.divMotos.appendChild(this.divTarjeta)
-		this.divMotos.append(this.divTarjeta)
+		this.divTarjeta = document.createElement("div")
+		this.divTarjeta.classList.add('tarjeta')
+		this.divMotos.appendChild(this.divTarjeta)
+
+		this.divImagen = document.createElement("div")
+		this.divTarjeta.appendChild(this.divImagen)
+		this.imagen = document.createElement("img")
+		this.imagen.classList.add("img")
+		this.imagen.setAttribute('src', moto.imagen)
+		this.divImagen.appendChild(this.imagen)
+
+		this.divBotones = document.createElement("div")
+		this.divBotones.classList.add('botones')
+		this.divTarjeta.appendChild(this.divBotones)
+
+		this.spanEditar = document.createElement("span")
+		this.spanEditar.classList.add('modbo')
+		this.iconoEditar = document.createElement("i")
+		this.iconoEditar.classList.add("fa-solid")
+		this.iconoEditar.classList.add("fa-pen")
+		this.spanEditar.appendChild(this.iconoEditar)
+		this.divBotones.appendChild(this.spanEditar)
 		
-		//this.divImagen = document.createElement("div")
-		this.divImagen = $("<div>")
-		//this.divTarjeta.appendChild(this.divImagen)
-		this.divTarjeta.append(this.divImagen)
-		//this.imagen = document.createElement("img")
-		//this.imagen.setAttribute('src', moto.imagen)
-		this.imagen = $("<img>")
-		this.imagen.attr("src",moto.imagen)			
-		//this.divImagen.appendChild(this.imagen)
-		this.divImagen.append(this.imagen)
-
-		//this.divBotones = document.createElement("div")
-		//this.divBotones.classList.add('botones')
-		this.divBotones = $("<div class='botones'>")
-		//this.divTarjeta.appendChild(this.divBotones)
-		this.divTarjeta.append(this.divBotones)
-
-		//this.spanEditar = document.createElement("span")
-		//this.spanEditar.classList.add('modbo')
-		this.spanEditar = $("<span class='modbo'>")
-		//this.iconoEditar = document.createElement("i")
-		//this.iconoEditar.classList.add("fa-solid")
-		//this.iconoEditar.classList.add("fa-pen")
-		this.iconoEditar = $("<i class='fa-solid fa-pen'>")
-		//this.spanEditar.appendChild(this.iconoEditar)
-		this.spanEditar.append(this.iconoEditar)
-		//this.divBotones.appendChild(this.spanEditar)
-		this.divBotones.append(this.spanEditar)
-		
-		//this.spanBorrar = document.createElement("span")
-		//this.spanBorrar.classList.add('modbo')
-		this.spanBorrar = $("<span class='modbo'>")
-		//this.iconoBorrar = document.createElement("i")
-		//this.iconoBorrar.classList.add("fa-solid")
-		//this.iconoBorrar.classList.add("fa-trash-can")
-		this.iconoBorrar  = ("<i class='fa-solid fa-trash-can'>")
-		//this.spanBorrar.appendChild(this.iconoBorrar)
-		this.spanBorrar.append(this.iconoBorrar)
-		//this.divBotones.appendChild(this.spanBorrar)
-		this.divBotones.append(this.spanBorrar)
-
+		this.spanBorrar = document.createElement("span")
+		this.spanBorrar.classList.add('modbo')
+		this.iconoBorrar = document.createElement("i")
+		this.iconoBorrar.classList.add("fa-solid")
+		this.iconoBorrar.classList.add("fa-trash-can")
+		this.spanBorrar.appendChild(this.iconoBorrar)
+		this.divBotones.appendChild(this.spanBorrar)
 	}
 }

@@ -20,8 +20,7 @@ class Controlador{
 	**/
 	constructor(){
 		this.modelo = new Modelo(this)
-		//window.onload = this.iniciar.bind(this)
-		$(document).ready(this.iniciar.bind(this))
+		window.onload = this.iniciar.bind(this)
 	}
 	/**
 		Inicia la aplicación
@@ -30,26 +29,17 @@ class Controlador{
 	iniciar(){
 		this.modelo = new Modelo()
 
-		//this.header = document.getElementsByTagName('header')[0]
-		this.header = $("<header>")
-		//this.divListar = document.getElementById('divListar')
-		this.divListar = $("#divListar")
-		//this.divAnadir= document.getElementById('divAnadir')
-		this.divAnadir = $("#divAnadir")
-		this.tarjetaAnadir = $("#targetaAnadir")
-		//this.divModificar = document.getElementById('divModificar')
-		this.divModificar = $("#divModificar")
+		this.header = document.getElementsByTagName('header')[0]
+		this.divListar = document.getElementById('divListar')
+		this.divAnadir= document.getElementById('divAnadir')
+		this.divModificar = document.getElementById('divModificar')
 
 		this.vistaNav = new VistaNav(this, this.header)
 		this.vistaListar = new VistaListar(this.divListar, this)
 		this.vistaAnadir = new VistaAnadir(this.divAnadir, this)
 		this.vistaModificar = new VistaModificar(this.divModificar, this)
 
-		//this.vista = new Vista(this, document.getElementById('divAnadir'))
-		this.vista = new Vista(this, this.divAnadir)
-
-		this.moverMoto()
-
+		this.vista = new Vista(this, document.getElementById('divAnadir'))
 	}
 	insertar(objeto){
 		this.modelo.insertar(objeto, this.insertarOK.bind(this))
@@ -85,11 +75,6 @@ class Controlador{
 	pulsarNavModificar(){
 		this.ocultarVistas()
 		this.vistaModificar.mostrar(true)
-	}
-	moverMoto(){
-		this.moto = $("#draggable")
-		console.log("mototototo0t")
-		this.moto.draggable()
 	}
 	/**
 	 * Devuelve el modelo de la aplicación

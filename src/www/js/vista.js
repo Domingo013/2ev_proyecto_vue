@@ -21,10 +21,8 @@ export class Vista{
 	**/
 	mostrar(ver){
 		if (ver)
-			//this.div.style.display = 'block'
-			this.div.show()
+			this.div.style.display = 'block'
 		else
-			//this.div.style.display = 'none'
-			this.div.hide()
+			this.div.style.display = 'none'
 	}
 }

@@ -154,6 +154,11 @@ footer{
 	border: 1px solid black;
 }
 
+img{
+	width: 300px;
+	height: auto;
+}
+
 .tarjeta{
 	width: 350px;
 	min-width: 300px;
@@ -165,14 +170,6 @@ footer{
 	position: relative;
 	transition: all 0.3s ease-in;
 	overflow: hidden;
-	align-items: center;
-	cursor: pointer;
-}
-
-#draggable{
-	width: 100px;
-	height: auto;
-	position: absolute;
 }
 
 .tarjeta:hover{
@@ -187,7 +184,6 @@ footer{
 
 .tarjeta div img{
 	width: 100%;
-	cursor: default;
 }
 
 #tarjetaAnadir{
@@ -197,13 +193,4 @@ footer{
 	font-size: 150px;
 	font-weight: bold;
 	cursor: pointer;
-	align-items: center;
-	cursor: pointer;
-}
-
-#anadir2{
-	margin: 0;
-    font-size: 200px;
-	width: 100% !important;
-	text-align: center;
 }
