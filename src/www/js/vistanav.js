@@ -15,15 +15,20 @@ export class VistaNav{
 	constructor(controlador, header){
 		this.controlador = controlador
 		this.header = header
-		this.liListar = this.header.getElementsByTagName('li')[1]
-		this.liAnadir = this.header.getElementsByTagName('li')[2]
-		this.liModificar = this.header.getElementsByTagName('li')[3]
-		this.spanAnadir = document.getElementById('anadir2')
+		//this.liListar = this.header.getElementsByTagName('li')[1]
+		this.liListar = $("#listar")
+		//this.liAnadir = this.header.getElementsByTagName('li')[2]
+		this.liAnadir = $("#anadir")
+		//this.liModificar = this.header.getElementsByTagName('li')[3]
+		this.liModificar = $("#modificar")
 
-		this.liListar.onclick = this.pulsarListar.bind(this)
-		this.liAnadir.onclick = this.pulsarAnadir.bind(this)
-		this.liModificar.onclick = this.pulsarModificar.bind(this)
-		this.spanAnadir.onclick = this.pulsarAnadir.bind(this)
+		//this.liListar.onclick = this.pulsarListar.bind(this)
+		this.liListar.click(this.pulsarListar.bind(this))
+		//this.liAnadir.onclick = this.pulsarAnadir.bind(this)
+		this.liAnadir.click(this.pulsarAnadir.bind(this))
+		//this.liModificar.onclick = this.pulsarModificar.bind(this)
+		this.liModificar.click(this.pulsarModificar.bind(this))
+
 	}
 	/**
 		Atención a la pulsación sobre el listar
