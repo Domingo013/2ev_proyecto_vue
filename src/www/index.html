@@ -23,55 +23,35 @@
                 <input type="text" name="buscar-nombre" tabindex="4"/>
                 <button tabindex="5" role="button">Buscar</button>
             </div>
+            <section class="cookies">
+                <h2 class="cookies__titulo">🍪¿Aceptas nuestras Cookies?🍪</h2> 
+                <p class="cookies__texto">Información sobre las Cookies:<br>Usamos estas Cookies para mejorar su experiencias en nuestra web</p>
+                <p class="cookies__texto" id="terms"><u>Más información</u></p>
+                <div>
+                    <div></div>
+                    <div>
+                        <div class="form-check form-switch">
+                            <label class="form-check-label" for="seguimientoVistas">Seguimiento de Visitas de usuario</label>
+                            <input type="checkbox" class="form-check-input" id="seguimientoVistas">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-check form-switch">
+                            <label class="form-check-label" for="ultimoElemento">Último elemento insertado</label>
+                            <input type="checkbox" class="form-check-input" id="ultimoElemento">
+                        </div>
+                    </div>
+                </div>
+                <div class="cookies__botones">
+                    <button class="cookies__boton cookies__boton--no"><span>No</span></button>
+                    <button class="cookies__boton cookies__boton--si"><span>Si</span></button>
+                    <button class="cookies__boton cookies__boton--per"><span>Personalizado</span></button>
+                </div>
+            </section>
             <div id="motos">
                 <!--<div class="tarjeta">
                     <div>
                         <img src="assets/honda.jpg" alt="honda">
-                    </div>
-                    <div class="botones">
-                        <span class="modbo"><i class="fa-solid fa-pen"></i></span>
-                        <span class="modbo"><i class="fa-solid fa-trash-can"></i></span>
-                    </div>
-                </div>
-                <div class="tarjeta">
-                    <div>
-                        <img src="assets/aprilia.jpg" alt="aprilia">
-                    </div>
-                    <div class="botones">
-                        <span class="modbo"><i class="fa-solid fa-pen"></i></span>
-                        <span class="modbo"><i class="fa-solid fa-trash-can"></i></span>
-                    </div>
-                </div>
-                <div class="tarjeta">
-                    <div>
-                        <img src="assets/bmw.jpg" alt="bmw">
-                    </div>
-                    <div class="botones">
-                        <span class="modbo"><i class="fa-solid fa-pen"></i></span>
-                        <span class="modbo"><i class="fa-solid fa-trash-can"></i></span>
-                    </div>
-                </div>
-                <div class="tarjeta">
-                    <div>
-                        <img src="assets/yamaha.jpg" alt="yamaha">
-                    </div>
-                    <div class="botones">
-                        <span class="modbo"><i class="fa-solid fa-pen"></i></span>
-                        <span class="modbo"><i class="fa-solid fa-trash-can"></i></span>
-                    </div>
-                </div>
-                <div class="tarjeta">
-                    <div>
-                        <img src="assets/ktm.jpg" alt="ktm">
-                    </div>
-                    <div class="botones">
-                        <span class="modbo"><i class="fa-solid fa-pen"></i></span>
-                        <span class="modbo"><i class="fa-solid fa-trash-can"></i></span>
-                    </div>
-                </div>
-                <div class="tarjeta">
-                    <div>
-                        <img src="assets/mvagusta.jpg" alt="mvagusta">
                     </div>
                     <div class="botones">
                         <span class="modbo"><i class="fa-solid fa-pen"></i></span>
@@ -203,29 +183,29 @@
         <script type="text/javascript" src="assets/jquery-ui-1.13.2.custom/jquery-ui.min.js"></script>
         <script type="module" src="js/app.js"></script>
     </body>
-    <section class="cookies">
-        <h2 class="cookies__titulo">🍪¿Aceptas nuestras Cookies?🍪</h2> 
-        <p class="cookies__texto">Información sobre las Cookies:<br>Usamos estas Cookies para mejorar su experiencias en nuestra web</p>
-        <div class="cookies__botones">
-            <button class="cookies__boton cookies__boton--no"><span>No</span></button>
-            <button class="cookies__boton cookies__boton--si"><span>Si</span></button>
-        </div>
-    </section>
+    
     <div id="nuevosScripts"></div>
     <script defer>
         let cookies = () => {
             // Configuración
-            const urlsScriptsCookies = ['https://analytics.google.com', 'https://facebook.com'];
+            //const urlsScriptsCookies = ['https://analytics.google.com', 'https://facebook.com'];
+            const urlsScriptsCookies = ['https://analytics.google.com'];
 
             function contenidoScriptsCookies () {
-                
+                let veces = parseInt(localStorage.getItem('cookieVisitas'))
+                console.log(veces);
+                localStorage.setItem('cookieVisitas', ++veces)
             }
 
             // Variables
             const seccionCookie = document.querySelector('section.cookies');
             const cookieSi = document.querySelector('.cookies__boton--si');
             const cookieNo = document.querySelector('.cookies__boton--no');
+            const cookiePer = document.querySelector('.cookies__boton--per');
             const nuevosScripts = document.querySelector('#nuevosScripts');
+
+            const cookieVisitas = document.querySelector('#seguimientoVistas')
+            const cookieUltimo = document.querySelector('#ultimoElemento')
 
             // Funciones
 
@@ -244,7 +224,12 @@
                 // Oculta el HTML de cookies
                 ocultarCookie();
                 // Guarda que ha aceptado
-                localStorage.setItem('cookie', true);
+                //localStorage.setItem('cookie', true);
+                if(!localStorage.getItem('cookieAceptadas')){
+                    localStorage.setItem('cookieAceptadas', true);
+                    localStorage.setItem('cookieVisitas', 1)
+                    localStorage.setItem('cookieUltimo', true)
+                }
                 // Tu codigo a ejecutar si aceptan las cookies
                 ejecutarSiAcepta();
             }
@@ -256,7 +241,10 @@
                 // Oculta el HTML de cookies
                 ocultarCookie();
                 // Guarda que ha aceptado
-                localStorage.setItem('cookie', false);
+                //localStorage.setItem('cookie', false);
+                localStorage.setItem('cookieAceptadas', false);
+                localStorage.setItem('cookieVisitas', false)
+                localStorage.setItem('cookieUltimo', false)
             }
 
             /**
@@ -271,6 +259,16 @@
                 });
                 // Lanza los códigos
                 contenidoScriptsCookies();
+            }
+
+            function personalizarCookies(){
+                ocultarCookie()
+
+                localStorage.setItem('cookieAceptadas', true);
+                if(cookieVisitas.checked)
+                    localStorage.setItem('cookieVisitas', 1)
+                if(cookieUltimo.checked)
+                    localStorage.setItem('cookieUltimo', true)
             }
 
             /**
@@ -292,14 +290,12 @@
             // Eventos
             cookieSi.addEventListener('click',aceptarCookies, false);
             cookieNo.addEventListener('click',denegarCookies, false);
-
+            cookiePer.addEventListener('click',personalizarCookies, false);
             return {
                 iniciar: iniciar
             }
         }
-
         // Activa el código. Comenta si quieres desactivarlo.
         cookies().iniciar();
-
     </script>
 </html>
