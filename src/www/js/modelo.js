@@ -15,7 +15,7 @@ export class Modelo{
 		this.lista = [] //Array de datos
 		this.callbacks = [] //Array de callbacks para implementar el observador
 		this.controlador = controlador
-		this.idb = new Idb()
+		this.idb = new Idb(this.controlador)
 	}
 	/**
 	 * Devuelve los datos del modelo.
@@ -24,6 +24,9 @@ export class Modelo{
 	 **/
 	getDatos(){
 	    return this.lista
+	}
+	listar(objeto, callback){
+		this.idb.listar(objeto, callback)
 	}
 	insertar(objeto, callback){
 		this.idb.insertar(objeto, callback)

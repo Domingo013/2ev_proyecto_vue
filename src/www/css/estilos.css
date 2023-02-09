@@ -1,3 +1,19 @@
+nav span{
+	cursor: pointer;
+}
+.activo{
+	display: block;
+}
+.inactivo{
+	display: none;
+}
+#vista1{
+	
+}
+#vista2{
+	
+}
+
 *{
 	font-family: Comfortaa;
 }
@@ -6,13 +22,13 @@ body{
 	background-color: rgb(219, 233, 233);
 }
 
-#divAnadir{
+/* #divAnadir{
 	display: none;
-}
+} */
 
-#divModificar{
+/* #divModificar{
 	display: none;
-}
+} */
 
 #logo{
 	width: 70px;
@@ -232,7 +248,7 @@ li#volver div{
     padding: 1rem;
     font-size: 1rem;
     color: white;
-    width: 150px;;
+    width: 5rem;
     text-align: center;
 }
 

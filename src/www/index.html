@@ -5,171 +5,47 @@
         <meta name=viewport content="width=device-width, initial-scale=1" />
         <script src="https://kit.fontawesome.com/5b31d65f7c.js" crossorigin="anonymous"></script>
         <title>MVC</title>
-        <link rel=stylesheet href="css/estilo.css" />
+        <link rel=stylesheet href="./css/estilos.css" />
         <link rel="stylesheet" href="assets/jquery-ui-1.13.2.custom/jquery-ui.theme.css">
         <link rel="stylesheet" href="assets/jquery-ui-1.13.2.custom/jquery-ui.css">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
     <body>
-        <header>
-            <ul>
-                <li><img src="assets/logo1.jpg" alt="logo" id="logo"></li>
-                <li><h2 id="listar" tabindex="1">LISTAR</h2></li>
-                <li><h2 id="anadir" tabindex="2">AÑADIR</h2></li>
-                <li><h2 id="modificar" tabindex="3">MODIFICAR</h2></li>
-            </ul>
-        </header>
-        <div id="divListar"><!-- <div id=divInicio> -->
-            <div id="barra-busqueda">
-                <input type="text" name="buscar-nombre" tabindex="4"/>
-                <button tabindex="5" role="button">Buscar</button>
-            </div>
-            <section class="cookies">
-                <h2 class="cookies__titulo">🍪¿Aceptas nuestras Cookies?🍪</h2> 
-                <p class="cookies__texto">Información sobre las Cookies:<br>Usamos estas Cookies para mejorar su experiencias en nuestra web</p>
-                <p class="cookies__texto" id="terms"><u>Más información</u></p>
-                <div>
-                    <div></div>
-                    <div>
-                        <div class="form-check form-switch">
-                            <label class="form-check-label" for="seguimientoVistas">Seguimiento de Visitas de usuario</label>
-                            <input type="checkbox" class="form-check-input" id="seguimientoVistas">
-                        </div>
-                    </div>
-                    <div>
-                        <div class="form-check form-switch">
-                            <label class="form-check-label" for="ultimoElemento">Último elemento insertado</label>
-                            <input type="checkbox" class="form-check-input" id="ultimoElemento">
-                        </div>
-                    </div>
-                </div>
-                <div class="cookies__botones">
-                    <button class="cookies__boton cookies__boton--no"><span>No</span></button>
-                    <button class="cookies__boton cookies__boton--si"><span>Si</span></button>
-                    <button class="cookies__boton cookies__boton--per"><span>Personalizado</span></button>
-                </div>
-            </section>
-            <div id="motos">
-                <!--<div class="tarjeta">
-                    <div>
-                        <img src="assets/honda.jpg" alt="honda">
-                    </div>
-                    <div class="botones">
-                        <span class="modbo"><i class="fa-solid fa-pen"></i></span>
-                        <span class="modbo"><i class="fa-solid fa-trash-can"></i></span>
-                    </div>
-                </div>
-                <div class="tarjeta" id="tarjetaAnadir">
-                    <span id="anadir2">+</span>
-                </div>-->
-            </div>
-        </div>
-        <div id="divAnadir">
-            <div id="divFormulario">
-                <div id="formulario">
-                    <div>
-                        <label for="marca">Marca:</label><br>
-                        <select name="marca" id="marcaMoto" tabindex="4">
-                            <option selected="true" value="0" hidden>Escoge una marca</option>
-                            <option value="aprilia" role="list">Aprilia</option>
-                            <option value="ktm" role="list">KTM</option>
-                            <option value="bmw" role="list">BMW</option>
-                            <option value="honda" role="list">Honda</option>
-                            <option value="yamaha" role="list">Yamaha</option>
-                            <option value="mvagusta" role="list">MVAgusta</option>
-                            <option value="ducati" role="list">Ducati</option>
-                            <option value="beta" role="list">Beta</option>
-                        </select>
-                    </div><br>
-                    <label for="tipo" tabindex="5">Tipo de moto:</label><br>
-                    <input type="radio" name="tipo" id="tipo1" tabindex="6" role="radio">Sport</input>
-                    <input type="radio" name="tipo" id="tipo2" tabindex="7" role="radio">Naked</input>
-                    <input type="radio" name="tipo" id="tipo3" tabindex="8" role="radio">Trail</input>
-                    <input type="radio" name="tipo" id="tipo4" tabindex="9" role="radio">Enduro</input>
-                    <input type="radio" name="tipo" id="tipo5" tabindex="10" role="radio">Cross</input><br><br>
-                    <label for="extra" tabindex="11">Extras:</label><br>
-                    <input type="checkbox" name="escape" id="extra1" tabindex="12" role="checkbox">Escape Akrapovic</input>
-                    <input type="checkbox" name="asiento" id="extra2" tabindex="13" role="checkbox">Asiento ergonómico</input>
-                    <input type="checkbox" name="punio" id="extra3" tabindex="14" role="checkbox">Puños calefactables</input>
-                    <input type="checkbox" name="bluetooth" id="extra4" tabindex="15" role="checkbox">Bluetooth</input><br><br>
-                    <div>
-                        <label for="anio">Año:</label><br>
-                        <input type="text" name="anio" id="anio" tabindex="16"/>
-                    </div><br>
-                    <div>
-                        <label for="kilometros">Kilometros:</label><br>
-                        <input type="text" name="kilometros" id="kilometros" title="Introduce los kilómetros de la moto a vender" tabindex="17"/>
-                    </div><br>
-                    <div>
-                        <label for="precio">Precio:</label><br>
-                        <input type="text" name="precio" id="precio" title="Introduce el precio de la moto a vender" tabindex="18"/>
-                    </div><br>
-                    <div>
-                        <label for="descripcion">Descripción:</label><br>
-                        <textarea name="descripcion" id="descripcion" title="Introduce el estado o características de la moto a vender" tabindex="19"></textarea>
-                    </div><br>
-                    <input type="file" name="imagen" id="imagenA" tabindex="20"/><br><br>
-                    <input type="checkbox" name="datosFormCheck">Acepto sin reserva la utilización de estos datos en la web.
-                    <div id="botones_formulario">
-                        <button id="btnCancelar" tabindex="21" role="button">Cancelar</button>
-                        <button id="btnAceptar" tabindex="22" role="button">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="divModificar">
-            <div id="divFormulario">
-                <div id="formulario">
-                    <div>
-                        <label for="marca">Marca:</label><br>
-                        <select name="marca" id="marcaMoto">
-                            <option selected="true" value="0" hidden>Escoge una marca</option>
-                            <option value="aprilia">Aprilia</option>
-                            <option value="ktm">KTM</option>
-                            <option value="bmw">BMW</option>
-                            <option value="honda">Honda</option>
-                            <option value="yamaha">Yamaha</option>
-                            <option value="mvagusta">MVAgusta</option>
-                            <option value="ducati">Ducati</option>
-                            <option value="beta">Beta</option>
-                        </select>
-                    </div><br>
-                    <label for="tipo">Tipo de moto:</label><br>
-                    <input type="radio" name="tipo" id="tipo1" role="radio">Sport</input>
-                    <input type="radio" name="tipo" id="tipo2" role="radio">Naked</input>
-                    <input type="radio" name="tipo" id="tipo3" role="radio">Trail</input>
-                    <input type="radio" name="tipo" id="tipo4" role="radio">Enduro</input>
-                    <input type="radio" name="tipo" id="tipo5" role="radio">Cross</input><br><br>
-                    <label for="extra">Extras:</label><br>
-                    <input type="checkbox" name="escape" id="extra1" role="checkbox">Escape Akrapovic</input>
-                    <input type="checkbox" name="asiento" id="extra2" role="checkbox">Asiento ergonómico</input>
-                    <input type="checkbox" name="punio" id="extra3" role="checkbox">Puños calefactables</input>
-                    <input type="checkbox" name="bluetooth" id="extra4" role="checkbox">Bluetooth</input><br><br>
-                    <div>
-                        <label for="anio">Año:</label><br>
-                        <input type="text" name="anio" id="anioModificar"/>
-                    </div><br>
-                    <div>
-                        <label for="kilometros">Kilometros:</label><br>
-                        <input type="text" name="kilometros" id="kilometros2" title="Introduce los kilómetros de la moto a vender" tabindex="17"/>
-                    </div><br>
-                    <div>
-                        <label for="precio">Precio:</label><br>
-                        <input type="text" name="precio" id="precio2" title="Introduce el precio de la moto a vender" tabindex="18"/>
-                    </div><br>
-                    <div>
-                        <label for="descripcion">Descripción:</label><br>
-                        <textarea name="descripcion" id="descripcion2" title="Introduce el estado o características de la moto a vender" tabindex="19"></textarea>
-                    </div><br>
-                    <input type="file" name="imagen" class="imagen"/><br><br>
-                    <input type="checkbox" name="datosFormCheck">Acepto sin reserva la utilización de estos datos en la web.
-                    <div id="botones_formulario">
-                        <button id="btnCancelarModificar" role="button">Cancelar</button>
-                        <button id="btnAceptarModificar" role="button">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer>
+		<header>
+			<nav id="nav"></nav>
+		</header>
+		<section class="cookies">
+			<h2 class="cookies__titulo">🍪¿Aceptas nuestras Cookies?🍪</h2> 
+			<p class="cookies__texto">Información sobre las Cookies:<br>Usamos estas Cookies para mejorar su experiencias en nuestra web</p>
+			<p class="cookies__texto" id="terms"><u>Más información</u></p>
+			<div>
+				<div></div>
+				<div>
+					<div class="form-check form-switch">
+						<label class="form-check-label" for="seguimientoVistas">Seguimiento de Visitas de usuario</label>
+						<input type="checkbox" class="form-check-input" id="seguimientoVistas">
+					</div>
+				</div>
+				<div>
+					<div class="form-check form-switch">
+						<label class="form-check-label" for="ultimoElemento">Último elemento insertado</label>
+						<input type="checkbox" class="form-check-input" id="ultimoElemento">
+					</div>
+				</div>
+			</div>
+			<div class="cookies__botones">
+				<button class="cookies__boton cookies__boton--no"><span>No</span></button>
+				<button class="cookies__boton cookies__boton--si"><span>Si</span></button>
+				<button class="cookies__boton cookies__boton--per"><span>Personalizado</span></button>
+			</div>
+		</section>
+		<div id="motos">	<!-- Listar motos en venta -->
+
+		</div>
+		<div id="vista2">
+			
+		</div>
+		<footer>
 			<img src="assets/instagram.png" alt="instagram" class="logoredes">
 			<img src="assets/facebook.png" alt="facebook" class="logoredes">
 			<img src="assets/twiter.png" alt="twiter" class="logoredes">
@@ -179,125 +55,123 @@
             <li><a href="lopd.html"><h2 id="">LOPD</h2></a></li>
             <li><a href="coockies.html"><h2 id="">Coockies</h2></a></li>
 		</footer>
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="assets/jquery-ui-1.13.2.custom/jquery-ui.min.js"></script>
-        <script type="module" src="js/app.js"></script>
-    </body>
-    
-    <div id="nuevosScripts"></div>
-    <script defer>
-        let cookies = () => {
-            // Configuración
-            //const urlsScriptsCookies = ['https://analytics.google.com', 'https://facebook.com'];
-            const urlsScriptsCookies = ['https://analytics.google.com'];
-
-            function contenidoScriptsCookies () {
-                let veces = parseInt(localStorage.getItem('cookieVisitas'))
-                console.log(veces);
-                localStorage.setItem('cookieVisitas', ++veces)
-            }
-
-            // Variables
-            const seccionCookie = document.querySelector('section.cookies');
-            const cookieSi = document.querySelector('.cookies__boton--si');
-            const cookieNo = document.querySelector('.cookies__boton--no');
-            const cookiePer = document.querySelector('.cookies__boton--per');
-            const nuevosScripts = document.querySelector('#nuevosScripts');
-
-            const cookieVisitas = document.querySelector('#seguimientoVistas')
-            const cookieUltimo = document.querySelector('#ultimoElemento')
-
-            // Funciones
-
-            /**
-             * Método que oculta la sección de Cookie para siempre
-             */
-            function ocultarCookie() {
-                // Borra la sección de cookies en el HTML
-                seccionCookie.remove();
-            }
-
-            /**
-             * Método que marca las cookies como aceptadas
-             */
-            function aceptarCookies() {
-                // Oculta el HTML de cookies
-                ocultarCookie();
-                // Guarda que ha aceptado
-                //localStorage.setItem('cookie', true);
-                if(!localStorage.getItem('cookieAceptadas')){
-                    localStorage.setItem('cookieAceptadas', true);
-                    localStorage.setItem('cookieVisitas', 1)
-                    localStorage.setItem('cookieUltimo', true)
-                }
-                // Tu codigo a ejecutar si aceptan las cookies
-                ejecutarSiAcepta();
-            }
-
-            /**
-             * Método que marca las cookies como denegadas
-             */
-            function denegarCookies() {
-                // Oculta el HTML de cookies
-                ocultarCookie();
-                // Guarda que ha aceptado
-                //localStorage.setItem('cookie', false);
-                localStorage.setItem('cookieAceptadas', false);
-                localStorage.setItem('cookieVisitas', false)
-                localStorage.setItem('cookieUltimo', false)
-            }
-
-            /**
-             * Método que ejecuta tu código si aceptan las cookies
-             */
-            function ejecutarSiAcepta() {
-                // Crea los <script>
-                urlsScriptsCookies.forEach((url) => {
-                    const nuevoScript = document.createElement('script');
-                    nuevoScript.setAttribute('src', url);
-                    nuevosScripts.appendChild(nuevoScript);
-                });
-                // Lanza los códigos
-                contenidoScriptsCookies();
-            }
-
-            function personalizarCookies(){
-                ocultarCookie()
-
-                localStorage.setItem('cookieAceptadas', true);
-                if(cookieVisitas.checked)
-                    localStorage.setItem('cookieVisitas', 1)
-                if(cookieUltimo.checked)
-                    localStorage.setItem('cookieUltimo', true)
-            }
-
-            /**
-             * Método que inicia la lógica
-             */
-            function iniciar() {
-                // Comprueba si en el pasado el usuario ha marcado una opción
-                if (localStorage.getItem('cookieAceptadas') !== null) {
-                    console.log('Estoy aqui')
-                    if(localStorage.getItem('cookieAceptadas') === 'true') {
-                        // Aceptó
-                        console.log('Estoy ahí')
-                        aceptarCookies();
-                    } else {
-                        // No aceptó
-                        denegarCookies();
-                    }
-                }
-            }
-
-            // Eventos
-            cookieSi.addEventListener('click',aceptarCookies, false);
-            cookieNo.addEventListener('click',denegarCookies, false);
-            cookiePer.addEventListener('click',personalizarCookies, false);
-            return {
-                iniciar: iniciar
-            }
-        }
-        // Activa el código. Comenta si quieres desactivarlo.
-        cookies().iniciar();
-    </script>
+		<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+		<script type=module src=./js/controlador.js ></script>
+	</body>
 </html>
+<div id="nuevosScripts"></div>
+<script defer>
+	let cookies = () => {
+		// Configuración
+		//const urlsScriptsCookies = ['https://analytics.google.com', 'https://facebook.com'];
+		const urlsScriptsCookies = ['https://analytics.google.com'];
+
+		function contenidoScriptsCookies () {
+			let veces = parseInt(localStorage.getItem('cookieVisitas'))
+			console.log(veces);
+			localStorage.setItem('cookieVisitas', ++veces)
+		}
+
+		// Variables
+		const seccionCookie = document.querySelector('section.cookies');
+		const cookieSi = document.querySelector('.cookies__boton--si');
+		const cookieNo = document.querySelector('.cookies__boton--no');
+		const cookiePer = document.querySelector('.cookies__boton--per');
+		const nuevosScripts = document.querySelector('#nuevosScripts');
+
+		const cookieVisitas = document.querySelector('#seguimientoVistas')
+		const cookieUltimo = document.querySelector('#ultimoElemento')
+
+		// Funciones
+
+		/**
+		 * Método que oculta la sección de Cookie para siempre
+		 */
+		function ocultarCookie() {
+			// Borra la sección de cookies en el HTML
+			seccionCookie.remove();
+		}
+
+		/**
+		 * Método que marca las cookies como aceptadas
+		 */
+		function aceptarCookies() {
+			// Oculta el HTML de cookies
+			ocultarCookie();
+			// Guarda que ha aceptado
+			//localStorage.setItem('cookie', true);
+			if(!localStorage.getItem('cookieAceptadas')){
+				localStorage.setItem('cookieAceptadas', true);
+				localStorage.setItem('cookieVisitas', 1)
+				localStorage.setItem('cookieUltimo', true)
+			}
+			// Tu codigo a ejecutar si aceptan las cookies
+			ejecutarSiAcepta();
+		}
+
+		/**
+		 * Método que marca las cookies como denegadas
+		 */
+		function denegarCookies() {
+			// Oculta el HTML de cookies
+			ocultarCookie();
+			// Guarda que ha aceptado
+			//localStorage.setItem('cookie', false);
+			localStorage.setItem('cookieAceptadas', false);
+			localStorage.setItem('cookieVisitas', false)
+			localStorage.setItem('cookieUltimo', false)
+		}
+
+		/**
+		 * Método que ejecuta tu código si aceptan las cookies
+		 */
+		function ejecutarSiAcepta() {
+			// Crea los <script>
+			urlsScriptsCookies.forEach((url) => {
+				const nuevoScript = document.createElement('script');
+				nuevoScript.setAttribute('src', url);
+				nuevosScripts.appendChild(nuevoScript);
+			});
+			// Lanza los códigos
+			contenidoScriptsCookies();
+		}
+
+		function personalizarCookies(){
+			ocultarCookie()
+
+			localStorage.setItem('cookieAceptadas', true);
+			if(cookieVisitas.checked)
+				localStorage.setItem('cookieVisitas', 1)
+			if(cookieUltimo.checked)
+				localStorage.setItem('cookieUltimo', true)
+		}
+
+		/**
+		 * Método que inicia la lógica
+		 */
+		function iniciar() {
+			// Comprueba si en el pasado el usuario ha marcado una opción
+			if (localStorage.getItem('cookieAceptadas') !== null) {
+				console.log('Estoy aqui')
+				if(localStorage.getItem('cookieAceptadas') === 'true') {
+					// Aceptó
+					console.log('Estoy ahí')
+					aceptarCookies();
+				} else {
+					// No aceptó
+					denegarCookies();
+				}
+			}
+		}
+
+		// Eventos
+		cookieSi.addEventListener('click',aceptarCookies, false);
+		cookieNo.addEventListener('click',denegarCookies, false);
+		cookiePer.addEventListener('click',personalizarCookies, false);
+		return {
+			iniciar: iniciar
+		}
+	}
+	// Activa el código. Comenta si quieres desactivarlo.
+	cookies().iniciar();
+</script>
