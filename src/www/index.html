@@ -276,9 +276,11 @@
              */
             function iniciar() {
                 // Comprueba si en el pasado el usuario ha marcado una opción
-                if (localStorage.getItem('cookie') !== null) {
-                    if(localStorage.getItem('cookie') === 'true') {
+                if (localStorage.getItem('cookieAceptadas') !== null) {
+                    console.log('Estoy aqui')
+                    if(localStorage.getItem('cookieAceptadas') === 'true') {
                         // Aceptó
+                        console.log('Estoy ahí')
                         aceptarCookies();
                     } else {
                         // No aceptó
